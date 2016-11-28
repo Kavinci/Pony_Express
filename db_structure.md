@@ -41,14 +41,17 @@ user mailbox table is a template for a database created for each user and will b
 - metadata -> Misc. historical record data like date and time associated with each status change.
 
 __Inbox Folder__
+
 Columns from the user_mailbox that will be used to display information in the inbox folder. This is query and view only.
 
 		inbox_id | master_id | to_user | from_user | subject | message | to_status | timestamp | metadata
 __Sent Folder__
+
 Columns from the user_mailbox that will be used to display information in the sent folder. This is query and view only.
 
 		inbox_id | master_id | to_user | from_user | subject | message | from_status | timestamp | metadata
 __Delete Folder__
+
 Columns from the user_mailbox that will be used to display information in the delete folder. This is query and view only.
 
 		inbox_id | master_id | to_user | from_user | subject | message | to_status | timestamp | metadata
