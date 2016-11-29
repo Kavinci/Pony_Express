@@ -1,0 +1,21 @@
+!SESSION 2016-10-07 21:51:16.748 -----------------------------------------------
+eclipse.buildId=3.4.2.201308081805
+java.version=1.6.0_24
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.equinox.security 1 0 2016-10-07 21:54:03.787
+!MESSAGE New keyring password generated. 
+
+!ENTRY org.eclipse.equinox.p2.touchpoint.natives 2 0 2016-10-07 21:54:37.882
+!MESSAGE Could not remove temporary backup directory (it is safe to manually delete it and its contents): C:\Users\Kent\AppData\Local\Temp\profile_2af43ff90a00_c0a80102ff9d
+!SESSION 2016-10-07 21:55:32.314 -----------------------------------------------
+eclipse.buildId=3.6.0.201407100658
+java.version=1.6.0_24
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2016-10-07 21:55:41.142
+!MESSAGE No repository found at file:/C:/Users/Kent/AppData/Local/Aptana%20Studio%203/configuration/org.eclipse.osgi/bundles/211/data/listener_1925729951/.
