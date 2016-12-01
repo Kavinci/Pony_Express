@@ -4,7 +4,7 @@
  */
 
 class PE_install{
-
+    global $wpdb;
     public function __construct()
     {
         $arr = $this->getUsers();
@@ -30,9 +30,12 @@ class PE_install{
 
     private function createDB()
     {
+        $db_name = "pedb"
         if(get_option("PE_installed") == false)
         {
-            //create DB here
+            $sql = "CREATE DATABASE `pedb`,
+            DEFAULT CHARACTER SET utf8,
+            COLLATE utf8_general_ci";
 
             update_option("PE_installed", true);
         };
@@ -40,10 +43,44 @@ class PE_install{
 
     public function createTable($arr)
     {
+        if(/*masterdb doesn't exist*/){
+
+            $charset_collate = $wpdb->get_charset_collate();
+
+            $sql = "CREATE TABLE pedb.master (
+                id mediumint(9) NOT NULL AUTO_INCREMENT,
+                to_user NOT NULL,
+                from_user NOT NULL,
+                subject,
+                message NOT NULL,
+                to_status,
+                from_status, 
+                timestamp datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+                status_history,
+                metadata,
+                PRIMARY KEY  (id)
+                ) $charset_collate;";
+        }
         foreach($arr as $id){
             if($this->checkTable($id) == false)
             {
-                //create tables here
+                
+            $charset_collate = $wpdb->get_charset_collate();
+
+            $sql = "CREATE TABLE master (
+                id mediumint(9) NOT NULL AUTO_INCREMENT,
+                master_id,
+                to_user NOT NULL,
+                from_user NOT NULL,
+                subject,
+                message NOT NULL,
+                to_status,
+                from_status, 
+                timestamp datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+                status_history,
+                metadata,
+                PRIMARY KEY  (id)
+                ) $charset_collate;";
             };
         }
     }
