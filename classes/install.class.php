@@ -48,7 +48,7 @@ class PE_install{
             $charset_collate = $wpdb->get_charset_collate();
 
             $sql = "CREATE TABLE pedb.master (
-                id mediumint(9) NOT NULL AUTO_INCREMENT,
+                master_id mediumint(9) NOT NULL AUTO_INCREMENT,
                 to_user NOT NULL,
                 from_user NOT NULL,
                 subject,
@@ -68,7 +68,7 @@ class PE_install{
             $charset_collate = $wpdb->get_charset_collate();
 
             $sql = "CREATE TABLE master (
-                id mediumint(9) NOT NULL AUTO_INCREMENT,
+                mailbox_id mediumint(9) NOT NULL AUTO_INCREMENT,
                 master_id,
                 to_user NOT NULL,
                 from_user NOT NULL,
