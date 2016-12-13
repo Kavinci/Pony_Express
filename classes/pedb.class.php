@@ -1,0 +1,1 @@
+//create a class to handle inputs to the DB and scrub the text

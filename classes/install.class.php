@@ -48,17 +48,17 @@ class PE_install{
             $charset_collate = $wpdb->get_charset_collate();
 
             $sql = "CREATE TABLE pedb.master (
-                master_id mediumint(9) NOT NULL AUTO_INCREMENT,
-                to_user NOT NULL,
-                from_user NOT NULL,
-                subject,
-                message NOT NULL,
-                to_status,
-                from_status, 
-                timestamp datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-                status_history,
-                metadata,
-                PRIMARY KEY  (id)
+                master_id mediumint(15) NOT NULL AUTO_INCREMENT,
+                to_user TINYTEXT NOT NULL,
+                from_user TINYTEXT NOT NULL,
+                subject TINYTEXT,
+                message LONGTEXT NOT NULL,
+                to_status TINYTEXT,
+                from_status TINYTEXT, 
+                state_change_date TIMESTAMP NOT NULL,
+                status_history TEXT,
+                metadata LONGTEXT,
+                PRIMARY KEY  (master_id)
                 ) $charset_collate;";
         }
         foreach($arr as $id){
@@ -68,18 +68,18 @@ class PE_install{
             $charset_collate = $wpdb->get_charset_collate();
 
             $sql = "CREATE TABLE master (
-                mailbox_id mediumint(9) NOT NULL AUTO_INCREMENT,
-                master_id,
-                to_user NOT NULL,
-                from_user NOT NULL,
-                subject,
-                message NOT NULL,
-                to_status,
-                from_status, 
-                timestamp datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-                status_history,
-                metadata,
-                PRIMARY KEY  (id)
+                mailbox_id mediumint(10) NOT NULL AUTO_INCREMENT,
+                master_id mediumint(15) NOT NULL,
+                to_user TINYTEXT NOT NULL,
+                from_user TINYTEXT NOT NULL,
+                subject TINYTEXT,
+                message LONGTEXT NOT NULL,
+                to_status TINYTEXT,
+                from_status TINYTEXT, 
+                status_change_date TIMESTAMP NOT NULL,
+                status_history TEXT,
+                metadata LONGTEXT,
+                PRIMARY KEY  (mailbox_id)
                 ) $charset_collate;";
             };
         }
