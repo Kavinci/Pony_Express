@@ -7,8 +7,13 @@ class PE_install{
     public function __construct()
     {
         $arr = $this->getUsers();
-        $this->createDB();
-        $this->createTable($arr);
+        add_option('isPEInstalled', false);
+        $this->checkDB();
+        $this->checkUserTable();
+        $this->
+        foreach($arr as $value){
+        $this->checkMailboxTable($value);
+        }
 
     }
 
@@ -30,21 +35,19 @@ class PE_install{
     private function createDB()
     {
         $db_name = "pedb"
-        if(get_option("PE_installed") == false)
-        {
-            $sql = "CREATE DATABASE `pedb`,
-            DEFAULT CHARACTER SET utf8,
-            COLLATE utf8_general_ci";
+        $sql = "CREATE DATABASE `pedb`,
+        DEFAULT CHARACTER SET utf8,
+        COLLATE utf8_general_ci";
 
-            update_option("PE_installed", true);
-        };
+        
+    }
+    private function createUserTable(){
+
     }
 
-    public function createTable($arr)
-    {
-        if(/*masterdb doesn't exist*/){
+    private function createMasterTable(){
 
-            $charset_collate = $wpdb->get_charset_collate();
+        $charset_collate = $wpdb->get_charset_collate();
 
             $sql = "CREATE TABLE pedb.master (
                 master_id mediumint(15) NOT NULL AUTO_INCREMENT,
@@ -59,8 +62,10 @@ class PE_install{
                 metadata LONGTEXT,
                 PRIMARY KEY  (master_id)
                 ) $charset_collate;";
-        }
-        foreach($arr as $id){
+    
+
+    private function createMailboxTable($id)
+    {
             if($this->checkTable($id) == false)
             {
                 
@@ -84,22 +89,21 @@ class PE_install{
         }
     }
 
-    public function checkTable($id)
+    public function checkMailboxTable($id)
     {
-        $bool = false;
+        //does table exist. if not create it. If so, end
+        $res = mysql_query("SHOW TABLES LIKE '$id'");
+        $data = mysql_num_rows($res) > 0;
 
-        //Query database for tables based on ID
+        if(!$res){
 
-        return $bool;
+        }
     }
 
     private function checkDB()
     {
-        $bool = false;
-
-        //Check for the DB
-        //If doesn't exist return false
-
-        return $bool;
+        if(get_option('isPEInstalled') == false){
+            $this->createDB();
+        }
     }
 }
