@@ -4,7 +4,6 @@
  */
 
 class PE_install{
-    global $wpdb;
     public function __construct()
     {
         $arr = $this->getUsers();
