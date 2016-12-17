@@ -10,6 +10,10 @@ class pedb{
         }
     }
 
+    private function filter(){
+        
+    }
+
     private function scrubadub($query){
         //scrub the query here
 
@@ -18,12 +22,28 @@ class pedb{
     }
 
     public function query($query){
-     $res = $this->scrubabub($query);
-     $this->connect();
-     $retval = mysql_query($res);
-     if(!$retval){
-         die('Could not complete query: ' . mysql_error());
-     }
-     mysql_close($pedb);
+        $res = $this->scrubabub($query);
+        $this->connect();
+        $retval = mysql_query($res);
+        if(!$retval){
+            die('Could not complete query: ' . mysql_error());
+        }
+    
+    }
+
+    public function UIquery($id){
+        
+    }
+
+    private function checkDB(){
+
+    }
+
+    private function checkTable($id){
+        
+    }
+
+    private function close(){
+        mysql_close($pedb);
     }
 }

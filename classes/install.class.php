@@ -42,7 +42,7 @@ class PE_install{
 
     public function createTable($arr)
     {
-        if(/*masterdb doesn't exist*/){
+        if(get_option("PE_installed") == false){
 
             $charset_collate = $wpdb->get_charset_collate();
 
@@ -60,46 +60,5 @@ class PE_install{
                 PRIMARY KEY  (master_id)
                 ) $charset_collate;";
         }
-        foreach($arr as $id){
-            if($this->checkTable($id) == false)
-            {
-                
-            $charset_collate = $wpdb->get_charset_collate();
-
-            $sql = "CREATE TABLE master (
-                mailbox_id mediumint(10) NOT NULL AUTO_INCREMENT,
-                master_id mediumint(15) NOT NULL,
-                to_user TINYTEXT NOT NULL,
-                from_user TINYTEXT NOT NULL,
-                subject TINYTEXT,
-                message LONGTEXT NOT NULL,
-                to_status TINYTEXT,
-                from_status TINYTEXT, 
-                status_change_date TIMESTAMP NOT NULL,
-                status_history TEXT,
-                metadata LONGTEXT,
-                PRIMARY KEY  (mailbox_id)
-                ) $charset_collate;";
-            };
-        }
-    }
-
-    public function checkTable($id)
-    {
-        $bool = false;
-
-        //Query database for tables based on ID
-
-        return $bool;
-    }
-
-    private function checkDB()
-    {
-        $bool = false;
-
-        //Check for the DB
-        //If doesn't exist return false
-
-        return $bool;
     }
 }

@@ -1,0 +1,7 @@
+pedb class
+- general query
+- UI query
+- filter
+- scrub input
+- open connection
+- close connection
