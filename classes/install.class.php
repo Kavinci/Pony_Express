@@ -7,8 +7,13 @@ class PE_install{
     public function __construct()
     {
         $arr = $this->getUsers();
-        $this->createDB();
-        $this->createTable($arr);
+        add_option('isPEInstalled', false);
+        $this->checkDB();
+        $this->checkUserTable();
+        $this->
+        foreach($arr as $value){
+        $this->checkMailboxTable($value);
+        }
 
     }
 
@@ -30,21 +35,14 @@ class PE_install{
     private function createDB()
     {
         $db_name = "pedb"
-        if(get_option("PE_installed") == false)
-        {
-            $sql = "CREATE DATABASE `pedb`,
-            DEFAULT CHARACTER SET utf8,
-            COLLATE utf8_general_ci";
-
-            update_option("PE_installed", true);
-        };
+        $sql = "CREATE DATABASE `pedb`,
+        DEFAULT CHARACTER SET utf8,
+        COLLATE utf8_general_ci";
     }
 
-    public function createTable($arr)
-    {
-        if(get_option("PE_installed") == false){
+    private function createMasterTable(){
 
-            $charset_collate = $wpdb->get_charset_collate();
+        $charset_collate = $wpdb->get_charset_collate();
 
             $sql = "CREATE TABLE pedb.master (
                 master_id mediumint(15) NOT NULL AUTO_INCREMENT,
@@ -59,6 +57,5 @@ class PE_install{
                 metadata LONGTEXT,
                 PRIMARY KEY  (master_id)
                 ) $charset_collate;";
-        }
     }
 }
