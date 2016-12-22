@@ -10,19 +10,12 @@ class pedb{
         }
     }
 
-    private function filter(){
-        
-    }
-
-    private function scrubadub($query){
-        //scrub the query here
-
-        //return a cleaned query
-        return;
+    private function filter($obj){
+        //filter the JSON objects to be written or read
     }
 
     public function query($query){
-        $res = $this->scrubabub($query);
+        //
         $this->connect();
         $retval = mysql_query($res);
         if(!$retval){
@@ -31,7 +24,7 @@ class pedb{
     
     }
 
-    public function UIquery($id){
+    private function UIquery($id){
         
     }
 
